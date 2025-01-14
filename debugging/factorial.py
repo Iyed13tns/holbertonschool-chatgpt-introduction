@@ -5,8 +5,20 @@ def factorial(n):
     result = 1
     while n > 1:
         result *= n
-        n -= 1  # Correction : décrémentation de n
+        n -= 1
     return result
 
-f = factorial(int(sys.argv[1]))
-print(f)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: ./factorial.py <number>")
+        sys.exit(1)
+
+    try:
+        num = int(sys.argv[1])
+        if num < 0:
+            print("Factorial is not defined for negative numbers.")
+        else:
+            print(factorial(num))
+    except ValueError:
+        print("Please provide an integer as input.")
+
